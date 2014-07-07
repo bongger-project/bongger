@@ -2,6 +2,7 @@
 #define OVERVIEWPAGE_H
 
 #include <QWidget>
+#include <QMovie>
 
 namespace Ui {
     class OverviewPage;
@@ -41,6 +42,8 @@ private:
     qint64 currentBalance;
     qint64 currentUnconfirmedBalance;
     qint64 currentImmatureBalance;
+    QMovie *bgrIconMovie;
+    QTimer *timer;
 
     TxViewDelegate *txdelegate;
     TransactionFilterProxy *filter;
@@ -49,6 +52,9 @@ private slots:
     void updateDisplayUnit();
     void handleTransactionClicked(const QModelIndex &index);
     void updateAlerts(const QString &warnings);
+
+    void on_BtnMine_clicked();
+    void TimerEvent();
 };
 
 #endif // OVERVIEWPAGE_H
